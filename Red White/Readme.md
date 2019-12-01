@@ -1,6 +1,6 @@
 This is the documentation of the Red White Bike Light App.
 
-#Privacy Statement
+## Privacy Statement
 
 This app does not collect any user data. In the following it is explained why every Permission the app aquires is necessary:
 1. (android.permission) Camera Flashlight autofocus flash is necessary to access the flashlight of the phone
