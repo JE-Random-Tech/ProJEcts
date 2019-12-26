@@ -1,5 +1,7 @@
 This is the documentation of the Red White Bike Light App.
 
+![Cover](/images/coverRedWhite.png)
+
 ## Privacy Statement
 
 This app does not collect any additional user data. In the following is explained why every Permission the app aquires is necessary:
