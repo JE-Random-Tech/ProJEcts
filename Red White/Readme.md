@@ -2,6 +2,8 @@ This is the documentation of the Red White Bike Light App.
 
 ![Cover](/images/coverRedWhite.png)
 
+<a href='https://play.google.com/store/apps/details?id=jerandomtech.red_white&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+
 ## Privacy Statement
 
 This app does not collect any additional user data. In the following is explained why every Permission the app aquires is necessary:
