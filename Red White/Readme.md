@@ -2,7 +2,7 @@ This is the documentation of the Red White Bike Light App.
 
 ![Cover](/images/coverRedWhite.png)
 
-<a href='https://play.google.com/store/apps/details?id=jerandomtech.red_white&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="100" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+<a href='https://play.google.com/store/apps/details?id=jerandomtech.red_white&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img width="192" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
 
 ## Privacy Statement
 
