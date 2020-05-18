@@ -10,4 +10,4 @@ This is a general script. Where to send and recive MQTT messages and code exampl
 
 To test the script send this message: {"property":true} or {"property":false} (!Retained Flag true e.g MQTT.fx top right) to the channel you subscribed to.
 
-This also works with the ESP32 change the first line from #include "ESP8266WiFi.h" to #include <WiFi.h>
+This also works with the ESP32. Change the first line from ```#include "ESP8266WiFi.h"``` to ```#include <WiFi.h>```
