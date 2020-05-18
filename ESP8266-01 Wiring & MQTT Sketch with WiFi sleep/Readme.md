@@ -1,6 +1,6 @@
 ## General
 
-Today we are going to get started with the ESP-01 for wirring and further information please watch this Video.
+Today we are going to get started with the ESP-01 for wiring and further information please watch this Video.
 
 ## Code Explanations
 
