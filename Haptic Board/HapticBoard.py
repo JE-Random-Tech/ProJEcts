@@ -62,12 +62,12 @@ def playBackground():
 def newVideoInit(videoIndex):
 	if(videoIndex is not 0):
 		#--live(did not work) --threshold (s) --video_queue (mb)
-		y= OMXPlayer(files[videoIndex], args=['--no-keys','--no-osd', '-b', '--layer', '1', '--video_queue', '1', '-n', '-1'], dbus_name='omxplayer.player'+str(videoIndex), pause=True)
+		y= OMXPlayer(files[videoIndex], args=['--no-keys','--no-osd', '-b', '--layer', '1', '--video_queue', '1'], dbus_name='omxplayer.player'+str(videoIndex), pause=True)
 		y.exitEvent = lambda arg1, arg2: playBackground()
 		return y
 	else:
 		#as hack to keep aspect ratio --win and then calculate --aspect-mode letterbox does not work
-		return OMXPlayer(files[videoIndex], args=['--no-keys','--no-osd', '-b','--layer', '2', '--video_queue', '1', '-n', '-1', '--loop'], dbus_name='omxplayer.player'+str(videoIndex),pause=True)
+		return OMXPlayer(files[videoIndex], args=['--no-keys','--no-osd', '-b','--layer', '2', '--video_queue', '1', '--loop'], dbus_name='omxplayer.player'+str(videoIndex),pause=True)
 
 #omxplayer only allows 8 processes
 files = {
