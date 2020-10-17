@@ -1,0 +1,99 @@
+version: '3.3'
+
+volumes:
+  foldername:
+    driver_opts:
+      type: "nfs"
+      o: "addr=192.168.178.99,nolock,soft,rw"
+      device: ":/PATH/TO/STORAGE" #QNAP file location starts with /share/YOUR/PATH/TO/STORAGE
+
+  letsencrypt:
+    driver: local
+
+services:
+
+  traefik:
+    image: "traefik:v2.3"
+    restart: always
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      #TODO uncomment test environment
+      #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+      - "--certificatesresolvers.myresolver.acme.email=YOUR@EMAIL.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      #improvements to get A grade on ssllab
+      - "--providers.file.filename=/traefik/traefik.yaml"
+    ports:
+      - "8880:80"
+      - "4433:443"
+      #webgui- "8888:8080"
+    volumes:
+      - "letsencrypt:/letsencrypt"
+      - "./traefik:/traefik" #add traefik.yaml in folder
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    depends_on:
+      - postgres
+      - nextcloud
+
+  postgres:
+    image: postgres:10.12-alpine
+    hostname: postgres
+    container_name: postgres
+    restart: always
+    # uses port 5432.
+    volumes:
+      - ./dbstorage:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=DATABASENAME
+      - POSTGRES_USER=DATABASEUSER
+      - POSTGRES_PASSWORD=DATABASEPASSWORD
+    
+  nextcloud:
+    image: nextcloud
+    hostname: app
+    container_name: nextcloud 
+    restart: always
+    labels:
+      - "traefik.protocol=http"
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      # make sure that .nextcloud. is the name of the service
+      - "traefik.http.routers.nextcloud.middlewares=nextcloud,nextcloud_redirect"
+      - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.routers.nextcloud.entrypoints=websecure"
+      - "traefik.http.routers.nextcloud.tls.certresolver=myresolver"
+      - "traefik.http.routers.nextcloud.rule=Host(`YOUR.DOMAIN.com`)"
+      - "traefik.http.middlewares.nextcloud.headers.stsSeconds=155520011"
+      - "traefik.http.middlewares.nextcloud.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.nextcloud.headers.stsPreload=true"
+      - "traefik.http.middlewares.nextcloud_redirect.redirectregex.regex=/.well-known/(card|cal)dav"
+      - "traefik.http.middlewares.nextcloud_redirect.redirectregex.replacement=/remote.php/dav/"
+    # listens only on port 80! Not on 433
+    volumes:
+      - ./nextcloudappdata:/var/www/html/custom_apps
+      - ./nextcloudconfigurationdata:/var/www/html/config
+      - type: volume
+        source: foldername
+        target: /external/media # /var/www/html/data/USER/files mount after creating User in Nextcloud GUI
+        volume:
+          nocopy: true
+
+    environment:
+      - POSTGRES_HOST=postgres # name as service of Postgres image or of hostname if defined
+      - POSTGRES_DB=DATABASENAME
+      - POSTGRES_USER=DATABASEUSER # will access postgres over 5432
+      - POSTGRES_PASSWORD=DATABASEPASSWORD
+      - NEXTCLOUD_TRUSTED_DOMAINS=YOUR.DOMAIN.com
+      - TRUSTED_PROXIES=traefik # name as service of Traefik image
+    depends_on:
+      - postgres
