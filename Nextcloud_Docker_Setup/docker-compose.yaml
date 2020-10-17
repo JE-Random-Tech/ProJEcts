@@ -84,7 +84,7 @@ services:
       - ./nextcloudconfigurationdata:/var/www/html/config
       - type: volume
         source: foldername
-        target: /external/media # /var/www/html/data/USER/files mount after creating User in Nextcloud GUI
+        target: /external/media # /var/www/html/data/USER/files mount after creating USER in Nextcloud GUI
         volume:
           nocopy: true
 
