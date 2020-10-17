@@ -13,6 +13,6 @@ I am in no way a professional so everything is at your own risk. That said if yo
 <!-- TODO-->
 
 ## Summary
- * existing data is mounted after creating USER to '/var/www/html/data/USER/files'
- * data is accessed using NFS and the option 'ALL_SQUASH' to avoid permission issues
+ * existing data is mounted after creating USER to `/var/www/html/data/USER/files`
+ * data is accessed using NFS and the option `ALL_SQUASH` to avoid permission issues
  * dyndns and port forwarding is used to nullify port issues
