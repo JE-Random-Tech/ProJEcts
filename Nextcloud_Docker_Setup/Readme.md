@@ -9,7 +9,7 @@ I am in no way a professional so everything is at your own risk. That said if yo
 ## Acknowledgement 
 
 "TEAM – Together Everyone Achieves More". I want to thank the following people for theire help in creating and improving this article:
- * @t0bska
+ * [@t0bska](https://github.com/t0bska)
 <!-- TODO-->
 
 ## Summary
