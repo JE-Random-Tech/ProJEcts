@@ -1,0 +1,9 @@
+#options to improve labssl rating
+
+tls:
+  options:
+    default:
+      minVersion: VersionTLS12
+      cipherSuites: # remove or add more if you encounter compatability issues
+        - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+        - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
