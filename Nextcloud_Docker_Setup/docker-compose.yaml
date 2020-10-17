@@ -25,13 +25,13 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
-      #TODO uncomment test environment
+      # test environment
       #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
       - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
       - "--certificatesresolvers.myresolver.acme.email=YOUR@EMAIL.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-      #improvements to get A grade on ssllab
+      # improvements to get A+ on ssllab
       - "--providers.file.filename=/traefik/traefik.yaml"
     ports:
       - "8880:80"
