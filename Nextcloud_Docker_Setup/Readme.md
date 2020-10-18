@@ -35,11 +35,11 @@ Now we have to specify user and password as well as the name of the database ser
 To mount the data properly remove the external storage setting and specify the target of the volume in the nextcloud service to `/var/www/html/data/USER/files` where USER is the user you want to mount the files to. Restart the container and use `docker exec --user www-data nextcloud php occ files:scan --all`. Log into nextcloud and go to the files tap. You should see the content of `/PATH/TO/STORAGE`. To always scan for external changes if you for example mounted your files to the windows explorer add `'filesystem_check_changes' => 1,` to the config.php file located in the nextcloudconfigurationdata folder relative to the docker-compose.yml file.
 
 ## Conclusion
-I hope this article helped you setting up Nextcloud. If you want to see more tutorials or proJEcts like this take a look at my [YouTube]() channel. Have a nice day.
+I hope this article helped you setting up Nextcloud. If you want to see more tutorials or proJEcts like this take a look at my [YouTube](https://www.youtube.com/channel/UCon2LqPY3CJUGIAhMsOnpIA) channel. Have a nice day.
 
 ## Debug and common issues
 This section contains tips and tricks as well as common issues because let's face it you most likely ran into one. First of all please go over the docker-compose.yaml file and make sure that you have set all parameters (all of them are at the beginning in capital letters).
 ### QNAP
 If you have problems to start the containers ssh into your NAS using e.g. putty and cd to the directory containing the compose file (mostly starts with /share/PATH/TODIRECTORY). Then you can execute `docker-compose up` and get the error message.
 ### Docker
-To get access to the terminals of your containers use `docker exec -it CONTAINERNAME bash` where CONTAINERNAME is either nextcloud, postgres or traefik. You can also expose certain ports. If you want to check if your nextcloud container is accessible expose port 80. You can map it like the example shows in the traefik service. 
+To get access to the terminals of your containers use `docker exec -it CONTAINERNAME bash` where CONTAINERNAME is either nextcloud, postgres or traefik. You can also expose certain ports. If you want to check if your nextcloud container is accessible expose port 80. You can map it like the example shows in the traefik service with `ports: - YOURPORT:80`. 
