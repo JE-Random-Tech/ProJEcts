@@ -19,7 +19,7 @@ I am in no way a professional so everything is at your own risk. That said if yo
 
 
 ## Get Started
-Docker in general is a versatile tool which is always good to know and be aware of the basic features like compose, network and volumes. [docker-curriculum](https://docker-curriculum.com/) is one of the best to get started. To clone this repository git has to be installed. The commands are on the top right of this page. Before we start the conatiners we have to set up our infrastructure and specify certain parts of the docker-compose.yaml file. (QNAP enable ssh and use e.g. putty or Container Station -> create -> create application (button))
+Docker in general is a versatile tool which is always good to know and be aware of the basic features like compose, network and volumes. [docker-curriculum](https://docker-curriculum.com/) is one of the best to get started. To clone this subfolder you can either use `git clone https://github.com/JE-Random-Tech/ProJEcts.git` and remove the other folders or install snv using `sudo apt install subversion` followed by `svn checkout https://github.com/JE-Random-Tech/ProJEcts/trunk/Nextcloud_Docker_Setup` to copy this subfolder. Before we start the conatiners we have to set up our infrastructure and specify certain parts of the docker-compose.yaml file. (QNAP enable ssh and use e.g. putty or Container Station -> create -> create application (button))
 
 ## Setup
 ### DynDNS and port forwarding
