@@ -40,7 +40,7 @@ To mount the data properly remove the external storage setting and specify the t
 I hope this article helped you setting up Nextcloud. If you want to see more tutorials or proJEcts like this take a look at my [YouTube](https://www.youtube.com/channel/UCon2LqPY3CJUGIAhMsOnpIA) channel. Have a nice day.
 
 ## Debug and common issues
-This section contains tips and tricks as well as common issues because let's face it you most likely ran into one. First of all please go over the docker-compose.yaml file and make sure that you have set all parameters (all of them are at the beginning in capital letters).
+This section contains tips and tricks as well as common issues because let's face it you most likely ran into one. First of all please go over the docker-compose.yaml file and make sure that all parameters are properly set (all of them are at the beginning in capital letters).
 ### QNAP
 If you have problems to start the containers ssh into your NAS using e.g. putty and cd to the directory containing the compose file (mostly starts with /share/PATH/TODIRECTORY). Then you can execute `docker-compose up` and get the error message.
 ### Docker

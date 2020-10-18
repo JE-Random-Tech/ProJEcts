@@ -91,7 +91,7 @@ services:
     environment:
       - POSTGRES_HOST=postgres # name as service of Postgres image or of hostname if defined
       - POSTGRES_DB=DATABASENAME
-      - POSTGRES_USER=DATABASEUSER # will access postgres over 5432
+      - POSTGRES_USER=DATABASEUSER
       - POSTGRES_PASSWORD=DATABASEPASSWORD
       - NEXTCLOUD_TRUSTED_DOMAINS=YOUR.DOMAIN.com
       - TRUSTED_PROXIES=traefik # name as service of Traefik image
