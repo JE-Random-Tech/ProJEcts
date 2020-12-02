@@ -45,3 +45,5 @@ This section contains tips and tricks as well as common issues because let's fac
 If you have problems to start the containers ssh into your NAS using e.g. putty and cd to the directory containing the compose file (mostly starts with `/share/PATH/TODIRECTORY`). Then you can execute `docker-compose up` and get the error message.
 ### Docker
 To get access to the terminals of your containers use `docker exec -it CONTAINERNAME bash` where CONTAINERNAME is either nextcloud, postgres or traefik. You can also expose certain ports. If you want to check if your nextcloud container is accessible expose port 80. You can map it like the example shows in the traefik service with `ports: - YOURPORT:80`. 
+### Grant access issues
+You have to add `overwriteprotocol => "https"` to the config.php as otherwise grant access wont work as it does not use https as [this](https://help.nextcloud.com/t/cannot-grant-access/64566) explains. 
